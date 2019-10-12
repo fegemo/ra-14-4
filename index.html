@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Razão de Aspecto 14,4 - Jogos Digitais no CEFET-MG</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="favicon.png">
+</head>
+<body>
+    <header>
+        <img id="logo" src="logo.gif" class="gif" alt="RA 14,4">
+    </header>
+    <main>
+        <div class="jogo horizontal">
+            <iframe src="catscape/index.html" frameborder="0"></iframe>
+            <div class="orelha">
+                <span>Sobre</span>
+            </div>
+            <div class="sobre">
+                <h2>Schrödinger Cat Scape</h2>
+                <dl>
+                    <dt>Autor:</dt>
+                    <dd>Ígor Chagas Marques</dd>
+                    <dt>Repositório:</dt>
+                    <dd><a href="https://github.com/Daegonny/schrodinger-cat-scape" target="_blank">🌐</a></dd>
+                    <dt>Vídeo:</dt>
+                    <dd><a href="https://youtu.be/g6dQaNFPYKI" target="_blank">🌐</a></dd>
+                </dl>
+            </div>
+        </div>
+        <div class="separador horizontal"></div>
+        <div class="jogo horizontal">
+            <iframe src="surirunner/index.html" frameborder="0"></iframe>
+            <div class="orelha">
+                <span>Sobre</span>
+            </div>
+                        <div class="sobre">
+                <h2>SuriRunner</h2>
+                <dl>
+                    <dt>Autor:</dt>
+                    <dd>João Pedro Silva Pereira</dd>
+                    <dt>Repositório:</dt>
+                    <dd><a href="https://github.com/joao-psp/SuriRunner" target="_blank">🌐</a></dd>
+                    <dt>Vídeo:</dt>
+                    <dd><a href="https://youtu.be/6fnaL0jwzaE" target="_blank">🌐</a></dd>
+                </dl>
+            </div>
+        </div>
+        <div class="separador horizontal"></div>
+        <div class="jogo horizontal">
+            <iframe src="supermazerunner/index.html" frameborder="0"></iframe>
+            <div class="orelha">
+                <span>Sobre</span>
+            </div>
+                        <div class="sobre">
+                <h2>Super Maze Runner</h2>
+                <dl>
+                    <dt>Autor:</dt>
+                    <dd>Marcus Buzette Braga</dd>
+                    <dt>Repositório:</dt>
+                    <dd><a href="https://github.com/marcusbuzette/games-tp1" target="_blank">🌐</a></dd>
+                    <dt>Vídeo:</dt>
+                    <dd><a href="https://www.youtube.com/watch?v=FNeBit-VlkM" target="_blank">🌐</a></dd>
+                </dl>
+            </div>
+        </div>
+        <div class="separador horizontal"></div>
+        <div class="jogo horizontal">
+            <iframe src="titanic2/index.html" frameborder="0"></iframe>
+            <div class="orelha">
+                <span>Sobre</span>
+            </div>
+                        <div class="sobre">
+                <h2>Titanic 2</h2>
+                <dl>
+                    <dt>Autor:</dt>
+                    <dd>Paulo Henrique da Costa Silva</dd>
+                    <dt>Repositório:</dt>
+                    <dd><a href="https://github.com/paulohcs/cefet-games-tp1" target="_blank">🌐</a></dd>
+                    <dt>Vídeo:</dt>
+                    <dd><a href="#">:'(</a></dd>
+                </dl>
+            </div>
+        </div>
+    </main>
+    <aside id="side-nav">
+        <span class="orelha">↩️</span>
+        <header>
+            <h1><abbr title="Razão de Aspecto">RA</abbr> 14,4</h1>
+        </header>
+        <div class="conteudo-nav">
+            <p>Estes são os jogos feitos como <abbr title="Trabalho Prático">TP</abbr>1  pelos alunos da turma de Desenvolvimento de Jogos Digitais do CEFET-MG em 2019/2.</p>
+            <p>Os alunos são:</p>
+            <ul>
+                <li>Ígor Chagas Marques (<a href="mailto:igorchagasm@hotmail.com">✉️</a>)</li>
+                <li>João Pedro Silva Pereira (<a href="mailto:joao.psp@hotmail.com">✉️</a>)</li>
+                <li>Marcus Buzette Braga (<a href="mailto:marcusbuzette@hotmail.com">️✉️</a>)</li>
+                <li>Paulo Henrique da Costa Silva (<a href="mailto:phsilva2309@gmail.com">✉️</a>)</li>
+            </ul>
+            <p>Os jogos deveriam ter uma razão de aspecto (divisão da largura pela altura) igual a 14,4 - uma tirinha deitada ou em pé. O <a href="">enunciado do trabalho</a> especifica também que os jogadores podem se abster do jogo por um tempo.</p>
+        </div>
+        <footer>
+            <dl>
+                <dt>Professor:</dt>
+                <dd><a href="mailto:fegemo@cefetmg.br">Flávio Coutinho</a></dd>
+                <dt>Material de aula:</dt>
+                <dd><a href="https://fegemo.github.io/cefet-games/">🌐</a></dd>
+            </dl>
+        </footer>
+    </aside>
+    <script>
+        const logoEl = document.querySelector('#logo');
+        logoEl.onclick = () => {
+            const addedGifClass = logoEl.classList.toggle('gif');
+            logoEl.src = addedGifClass ? 'logo.gif' : 'logo.png';
+        };
+        const orelhaEl = document.querySelector('#side-nav .orelha');
+        orelhaEl.onclick = e => {
+            const abriuSideNav = orelhaEl.closest('#side-nav').classList.toggle('aberto');
+            document.querySelector('body').classList.toggle('menu-aberto', abriuSideNav);
+        };
+        const orelhasSobreJogo = document.querySelectorAll('.jogo .orelha');
+        orelhasSobreJogo.forEach(el => {
+            el.onclick = e => {
+                const jogoEl = e.currentTarget.closest('.jogo');
+                jogoEl.classList.toggle('sobre-aberto');
+            };
+        });
+    </script>
+</body>
+</html>

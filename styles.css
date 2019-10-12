@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+
+#logo {
+    width: 200px;
+    cursor: pointer;
+}
+
+html, body {
+    height: 100%;
+    text-align: center;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    background-color: beige;
+    overflow-x: hidden;
+    --tamanho-menu: 350px;
+    --menu-transition: all 200ms ease-out;
+    --tamanho-orelha-jogo: 32px;
+}
+
+body > *:not(#side-nav) {
+    width: 100%;
+    transition: var(--menu-transition);
+}
+
+@media (min-width: 1024px) {
+    body.menu-aberto > *:not(#side-nav) {
+        width: calc(100% - var(--tamanho-menu));    
+    }
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex: 1;
+    align-items: center;
+}
+
+.jogo {
+    overflow: hidden;
+    --tamanho: 833px;
+    display: flex;
+    position: relative;
+}
+
+.jogo.horizontal {
+    width: var(--tamanho);
+    height: calc(var(--tamanho) / 14.4 + 1px);
+    flex-direction: row;
+}
+
+.jogo iframe {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.jogo .orelha {
+    background-color: #0d8cdd;
+    height: calc(100% - 6px);
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    text-align: left;
+}
+
+.jogo .orelha > span {
+    transform: rotate(-90deg) translateX(-50%);
+    display: inline-block;
+}
+
+.jogo .sobre {
+    font-size: 14px;
+    position: absolute;
+    left: 100%;
+    width: 100%;
+    top: 0;
+    height: calc(100%);
+    transition: var(--menu-transition);
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    padding: 0.5em;
+    align-items: baseline;
+}
+
+.jogo.sobre-aberto .sobre {
+    left: var(--tamanho-orelha-jogo);
+}
+
+.jogo.sobre-aberto .orelha {
+    left: 0;
+}
+
+.jogo .sobre h2 {
+    width: auto;
+}
+
+.jogo .sobre dl {
+    flex: 1;
+}
+
+dl {
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: row;
+}
+
+dt {
+    margin-left: 2em;
+    font-weight: bold;
+}
+
+dd {
+    margin-left: 1em;
+}
+
+.separador {
+    --tamanho: 8px;
+}
+
+.separador.horizontal {
+    height: var(--tamanho);
+    width: 90%;
+    margin: auto;
+    background-color: #fe9b3b;
+    border: 2px solid black;
+}
+
+#side-nav {
+    background-color: white;
+    font-family: 'Poppins', sans-serif;
+    text-align: left;
+    position: absolute;
+    right: calc(-1 * var(--tamanho-conteudo));
+    width: calc(var(--tamanho-conteudo) + var(--tamanho-orelha));
+    height: 100vh;
+    --tamanho-conteudo: var(--tamanho-menu);
+    --tamanho-orelha: 32px;
+    transition: var(--menu-transition);
+    box-shadow: -2px 2px 2px #0003;
+    display: flex;
+    flex-direction: column;
+}
+
+#side-nav.aberto {
+    right: 0;
+    box-shadow: -6px 2px 6px #0006;
+}
+
+#side-nav:not(.aberto):hover {
+    transform: translateX(-10px);
+    box-shadow: -6px 2px 6px #0006;
+}
+
+#side-nav h1 {
+    text-align: center;
+}
+
+#side-nav .orelha {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: var(--tamanho-orelha);
+    height: 100vh;
+    font-size: calc(var(--tamanho-orelha) * 0.75);
+    cursor: pointer;
+    transition: all 100ms ease-out;
+}
+
+#side-nav .orelha:hover {
+    background-color: #0003;
+}
+
+#side-nav .orelha:active {
+    filter: invert();
+}
+
+#side-nav .orelha ~ * {
+    margin-left: var(--tamanho-orelha);
+}
+
+#side-nav .conteudo-nav {
+    padding: 0.5em 0.75em;
+    text-align: justify;
+    flex: 1;
+}
+
+#side-nav .conteudo-nav ul {
+    text-align: left;
+}
+
+#side-nav footer {
+    background: gainsboro;
+    margin-left: 0 !important;
+    padding: 0.75em 0.75em 0.75em calc(0.25em + var(--tamanho-orelha));
+}
+
+a:link {
+    animation: floating 1s ease-in-out 0s infinite alternate;
+    transform-origin: center center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+a:hover {
+    color: rebeccapurple;
+    animation-duration: 0.15s;
+}
+
+@keyframes floating {
+    from {
+        transform: scale(0.95);
+        text-shadow: 0px 0px 0px #0006;
+    }
+    to {
+        transform: scale(1.05);
+        text-shadow: 2px 2px 2px #0006;
+    }
+}
+
